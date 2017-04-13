@@ -76,12 +76,12 @@ public class FeedActivity extends AppCompatActivity {
 
         if(hashmap == null) // se nao tiver posts ou caso fique vazia
             posts = new ArrayList<>();
-        else
+        else {
             posts = new ArrayList<>(hashmap.values());
 
-        Collections.reverse(posts);
-        preencheLista(posts);
-
+            Collections.reverse(posts);
+            preencheLista(posts);
+        }
     }
 
     public void preencheLista(List<Post> posts)    {
@@ -102,10 +102,11 @@ public class FeedActivity extends AppCompatActivity {
 //        mPosts.add(p1);
 //        mPosts.add(p2);
 
-
-        mRecyclerViewFeed.setAdapter(new FeedAdapter(this, posts));
-        RecyclerView.LayoutManager layoutManager = new LinearLayoutManager(this, LinearLayoutManager.VERTICAL, false);
-        mRecyclerViewFeed.setLayoutManager(layoutManager);
+        if(posts != null || !posts.isEmpty()) {
+            mRecyclerViewFeed.setAdapter(new FeedAdapter(this, posts));
+            RecyclerView.LayoutManager layoutManager = new LinearLayoutManager(this, LinearLayoutManager.VERTICAL, false);
+            mRecyclerViewFeed.setLayoutManager(layoutManager);
+        }
     }
 
 
