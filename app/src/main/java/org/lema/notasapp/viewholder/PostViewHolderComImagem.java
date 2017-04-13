@@ -31,11 +31,11 @@ public class PostViewHolderComImagem extends RecyclerView.ViewHolder {
 
         this.activity = activity;
         mensagem = (TextView) itemView.findViewById(R.id.tv_feed_mensagem);
-        autor = (TextView) itemView.findViewById(R.id.tv_feed_data);
+        autor = (TextView) itemView.findViewById(R.id.tv_feed_autor_foto);
         imagem = (ImageView) itemView.findViewById(R.id.iv_feed_imagem);
 
 
-        data = (TextView) itemView.findViewById(R.id.tv_feed_dia_foto);
+        data = (TextView) itemView.findViewById(R.id.tv_feed_data_foto);
 
     }
 

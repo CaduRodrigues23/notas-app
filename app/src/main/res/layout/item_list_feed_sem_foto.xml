@@ -14,7 +14,7 @@
         android:background="@drawable/fundo_feed_sem_foto">
 
         <TextView
-            android:id="@+id/tv_feed_dia"
+            android:id="@+id/tv_feed_data"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_alignParentLeft="true"
@@ -39,7 +39,7 @@
             android:textStyle="normal|bold" />
 
         <TextView
-            android:id="@+id/tv_feed_dia_foto"
+            android:id="@+id/tv_feed_autor"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_alignParentEnd="true"

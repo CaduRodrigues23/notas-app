@@ -31,8 +31,8 @@ public class PostViewHolderSemImagem extends RecyclerView.ViewHolder {
 
         this.activity = activity;
         mensagem = (TextView) itemView.findViewById(R.id.tv_feed_mensagem);
-        autor = (TextView) itemView.findViewById(R.id.tv_feed_dia_foto);
-        data = (TextView) itemView.findViewById(R.id.tv_feed_dia);
+        autor = (TextView) itemView.findViewById(R.id.tv_feed_autor);
+        data = (TextView) itemView.findViewById(R.id.tv_feed_data);
     }
 
     public void onBind(final Post post) {
