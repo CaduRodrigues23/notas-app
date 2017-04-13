@@ -14,16 +14,32 @@
         android:layout_height="match_parent">
 
         <TextView
-            android:id="@+id/tv_feed_autor"
+            android:id="@+id/tv_feed_dia_foto"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentBottom="true"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentStart="true"
+            android:layout_marginBottom="13dp"
+            android:layout_marginLeft="13dp"
+            android:paddingRight="5dp"
+            android:text="00/00/0000"
+            android:textColor="@color/cardview_dark_background"
+            android:textSize="15sp" />
+
+        <TextView
+            android:id="@+id/tv_feed_data"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_alignParentBottom="true"
             android:layout_alignParentEnd="true"
             android:layout_alignParentRight="true"
+            android:layout_marginBottom="13dp"
+            android:layout_marginRight="13dp"
             android:paddingRight="5dp"
             android:text="- Maxmiller Alves"
-            android:textColor="@color/colorTextDefaultDark"
-            android:textSize="15sp" />
+            android:textColor="@color/cardview_dark_background"
+            android:textSize="16sp" />
 
         <ImageView
             android:id="@+id/iv_feed_imagem"
@@ -39,16 +55,17 @@
             android:id="@+id/tv_feed_mensagem"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentStart="true"
+            android:layout_below="@+id/iv_feed_imagem"
             android:maxLines="3"
             android:paddingLeft="5dp"
             android:paddingRight="5dp"
-            android:paddingTop="6dp"
+            android:paddingTop="3dp"
             android:text="Prof. Alessandro Karppel Jordão contemplado no edital PAq1/2016, mais de trinta professores selecionados."
             android:textColor="@color/colorSecundary"
             android:textSize="18sp"
-            android:layout_below="@+id/iv_feed_imagem"
-            android:layout_alignParentLeft="true"
-            android:layout_alignParentStart="true" />
+            android:textStyle="bold" />
 
 
     </RelativeLayout>
