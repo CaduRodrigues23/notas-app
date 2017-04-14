@@ -19,6 +19,7 @@ import com.google.firebase.database.ValueEventListener;
 import org.lema.notasapp.R;
 import org.lema.notasapp.adapter.FeedAdapter;
 import org.lema.notasapp.domain.model.Post;
+import org.lema.notasapp.ui.activity.MainActivity;
 
 import java.util.ArrayList;
 import java.util.Collections;
@@ -87,6 +88,8 @@ public class FeedFragment extends Fragment {
         mRecyclerViewFeed.setAdapter(new FeedAdapter(getActivity(), posts));
         RecyclerView.LayoutManager layoutManager = new LinearLayoutManager(getContext(), LinearLayoutManager.VERTICAL, false);
         mRecyclerViewFeed.setLayoutManager(layoutManager);
+
+        ((MainActivity)getActivity()).ocultarCarregando();
     }
 
 }

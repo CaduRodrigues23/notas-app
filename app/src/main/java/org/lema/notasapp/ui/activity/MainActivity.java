@@ -145,7 +145,7 @@ public class MainActivity extends OAuthActivity {
 
     @Subscribe
     public void preencheLista(BoletimEvent event) {
-        ocultarCarregando();
+        //ocultarCarregando();
 
         Aluno comNome = alunoDao.obterAlunoDoLogin();
 
