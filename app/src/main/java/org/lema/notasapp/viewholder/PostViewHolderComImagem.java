@@ -11,6 +11,8 @@ import com.squareup.picasso.Picasso;
 import org.lema.notasapp.R;
 import org.lema.notasapp.domain.model.Post;
 
+import java.text.SimpleDateFormat;
+
 /**
  * Created by igor on 08/03/17.
  */
@@ -22,14 +24,18 @@ public class PostViewHolderComImagem extends RecyclerView.ViewHolder {
     final TextView mensagem;
     final TextView autor;
     final ImageView imagem;
+    final TextView data;
 
     public PostViewHolderComImagem(Activity activity, View itemView) {
         super(itemView);
 
         this.activity = activity;
         mensagem = (TextView) itemView.findViewById(R.id.tv_feed_mensagem);
-        autor = (TextView) itemView.findViewById(R.id.tv_feed_autor);
+        autor = (TextView) itemView.findViewById(R.id.tv_feed_autor_foto);
         imagem = (ImageView) itemView.findViewById(R.id.iv_feed_imagem);
+
+
+        data = (TextView) itemView.findViewById(R.id.tv_feed_data_foto);
 
     }
 
@@ -39,5 +45,12 @@ public class PostViewHolderComImagem extends RecyclerView.ViewHolder {
         Picasso.with(activity)
                 .load(post.getLinkParaFoto())
                 .into(imagem);
+
+        if (post.getDataPostagem() != null) {
+            SimpleDateFormat dataPost = new SimpleDateFormat("dd/MM/yyyy");
+            data.setText(dataPost.format(post.getDataPostagem()));
+        } else {
+            data.setText("");
+        }
     }
 }

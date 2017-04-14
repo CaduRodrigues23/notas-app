@@ -1,11 +1,13 @@
-package org.lema.notasapp.ui.activity;
+package org.lema.notasapp.ui.fragment;
 
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.support.annotation.Nullable;
+import android.support.v4.app.Fragment;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
-import android.support.v7.widget.Toolbar;
-import android.view.Menu;
+import android.view.LayoutInflater;
+import android.view.View;
+import android.view.ViewGroup;
 
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
@@ -17,29 +19,39 @@ import com.google.firebase.database.ValueEventListener;
 import org.lema.notasapp.R;
 import org.lema.notasapp.adapter.FeedAdapter;
 import org.lema.notasapp.domain.model.Post;
+import org.lema.notasapp.ui.activity.MainActivity;
 
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.HashMap;
 import java.util.List;
 
-public class FeedActivity extends AppCompatActivity {
+/**
+ * Created by igor on 04/04/17.
+ */
+
+public class FeedFragment extends Fragment {
 
     private RecyclerView mRecyclerViewFeed;
     private DatabaseReference databaseReference;
-    private Toolbar mToolbar;
+
+    public FeedFragment() {
+
+    }
 
     @Override
-    protected void onCreate(Bundle savedInstanceState) {
+    public void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_feed);
+    }
 
-        preencheReferencias();
+    @Nullable
+    @Override
+    public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, Bundle savedInstanceState) {
 
-        preparaToolbar();
+        View view = inflater.inflate(R.layout.activity_feed, container, false);
+        mRecyclerViewFeed = (RecyclerView) view.findViewById(R.id.rv_feed);
 
         this.databaseReference = FirebaseDatabase.getInstance().getReference();
-
         databaseReference.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
@@ -55,18 +67,8 @@ public class FeedActivity extends AppCompatActivity {
 
             }
         });
-    }
 
-    @Override
-    public boolean onCreateOptionsMenu(Menu menu) {
-        getMenuInflater().inflate(R.menu.menu_feed, menu);
-
-        return true;
-    }
-
-    private void preencheReferencias() {
-        mRecyclerViewFeed = (RecyclerView) findViewById(R.id.rv_feed);
-        //mToolbar = (Toolbar) findViewById(R.id.toolbar_feed);
+        return view;
     }
 
     public void atualizaLista(HashMap<String, Post> hashmap) {
@@ -74,27 +76,20 @@ public class FeedActivity extends AppCompatActivity {
 
         if(hashmap == null) // se nao tiver posts ou caso fique vazia
             posts = new ArrayList<>();
-        else {
+        else
             posts = new ArrayList<>(hashmap.values());
 
-            Collections.reverse(posts);
-            preencheLista(posts);
-        }
+        Collections.reverse(posts);
+        preencheLista(posts);
+
     }
 
     public void preencheLista(List<Post> posts)    {
+        mRecyclerViewFeed.setAdapter(new FeedAdapter(getActivity(), posts));
+        RecyclerView.LayoutManager layoutManager = new LinearLayoutManager(getContext(), LinearLayoutManager.VERTICAL, false);
+        mRecyclerViewFeed.setLayoutManager(layoutManager);
 
-        if(posts != null || !posts.isEmpty()) {
-            mRecyclerViewFeed.setAdapter(new FeedAdapter(this, posts));
-            RecyclerView.LayoutManager layoutManager = new LinearLayoutManager(this, LinearLayoutManager.VERTICAL, false);
-            mRecyclerViewFeed.setLayoutManager(layoutManager);
-        }
+        ((MainActivity)getActivity()).ocultarCarregando();
     }
 
-
-    private void preparaToolbar(){
-       /* mToolbar.setTitle("Notícias");
-        setSupportActionBar(mToolbar);
-        getSupportActionBar().setDisplayHomeAsUpEnabled(true);*/
-    }
 }

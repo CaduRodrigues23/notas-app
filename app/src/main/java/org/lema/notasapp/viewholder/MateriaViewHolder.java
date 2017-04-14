@@ -30,7 +30,7 @@ public class MateriaViewHolder extends RecyclerView.ViewHolder {
     final TextView nomeMateria;
     final TextView periodoMateria;
     final TextView codigoMateria;
-    final Button btnSugerir;
+    final TextView btnSugerir;
 
     public MateriaViewHolder(Activity activity, View itemView) {
         super(itemView);
@@ -43,15 +43,16 @@ public class MateriaViewHolder extends RecyclerView.ViewHolder {
         nomeMateria = (TextView) itemView.findViewById(R.id.disciplina);
         periodoMateria = (TextView) itemView.findViewById(R.id.periodoMateria);
         codigoMateria = (TextView) itemView.findViewById(R.id.codigoMateria);
-        btnSugerir = (Button) itemView.findViewById(R.id.btn_sugerir);
+        btnSugerir = (TextView) itemView.findViewById(R.id.btn_sugerir);
 
     }
 
     public void onBind(final MateriaDto materia) {
-        av1.setText(String.valueOf(materia.getNotaDaAv1()));
-        av2.setText(String.valueOf(materia.getNotaDaAv2()));
-        av3.setText(String.valueOf(materia.getNotaDaAv3()));
-        media.setText(String.valueOf(materia.getMedia()));
+
+        if (materia.getNotaDaAv1() == 10.0) av1.setText("10"); else av1.setText(String.valueOf(materia.getNotaDaAv1()));
+        if (materia.getNotaDaAv2() == 10.0) av2.setText("10"); else av2.setText(String.valueOf(materia.getNotaDaAv2()));
+        if (materia.getNotaDaAv3() == 10.0) av3.setText("10"); else av3.setText(String.valueOf(materia.getNotaDaAv3()));
+        if (materia.getMedia() == 10.0) media.setText("10"); else media.setText(String.valueOf(materia.getMedia()));
         nomeMateria.setText(String.valueOf(materia.getNome()));
 
 
@@ -115,4 +116,5 @@ public class MateriaViewHolder extends RecyclerView.ViewHolder {
         periodoMateria.setText(materia.getAno());
         codigoMateria.setText(materia.getCodigo());
     }
+
 }

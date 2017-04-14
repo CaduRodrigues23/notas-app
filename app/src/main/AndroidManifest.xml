@@ -15,26 +15,23 @@
         android:label="@string/app_name"
         android:theme="@style/AppTheme">
         <activity
-            android:name=".ui.activity.FeedActivity"
+            android:name=".ui.activity.LoginActivity"
             android:configChanges="orientation|screenSize"
             android:label="@string/app_name">
+
+        </activity>
+        <activity android:name=".ui.activity.SugestaoNomeMateriaActivity" />
+        <activity
+            android:name=".ui.activity.BoletimActivity"
+            android:configChanges="orientation|screenSize" />
+        <activity android:name=".ui.activity.FeedActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".ui.activity.SugestaoNomeMateriaActivity" />
-        <activity
-            android:name=".ui.activity.BoletimActivity"
-            android:configChanges="orientation|screenSize" />
-        <activity android:name=".ui.activity.LoginActivity" />
         <activity android:name=".ui.activity.TermosCondicoesActivity" />
-        <!--<activity android:name=".ui.activity.FeedActivity">-->
-            <!--<intent-filter>-->
-                <!--<category android:name="android.intent.category.LAUNCHER" />-->
-            <!--</intent-filter>-->
-        <!--</activity>-->
 
         <service android:name=".infra.firebase.notification.PushService">
             <intent-filter>
@@ -48,6 +45,16 @@
             </intent-filter>
         </service>
 
+        <activity android:name=".ui.activity.MainActivity">
+            <intent-filter>
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+        <activity android:name=".ui.activity.PostActivity">
+            <intent-filter>
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
     </application>
 
 
