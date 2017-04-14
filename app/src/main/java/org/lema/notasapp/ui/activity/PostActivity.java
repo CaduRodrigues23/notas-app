@@ -5,6 +5,7 @@ import android.support.design.widget.AppBarLayout;
 import android.support.design.widget.CollapsingToolbarLayout;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
+import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
 
@@ -33,6 +34,7 @@ public class PostActivity extends AppCompatActivity {
     private ImageView capa;
     private TextView dataPostagem;
     private TextView texto;
+    private Button likeButton;
     private TextView autorNome;
     private TextView autorDescricao;
     private ImageView autorFoto;
@@ -53,7 +55,7 @@ public class PostActivity extends AppCompatActivity {
 
         buscaParametros();
 
-        valoresTeste();
+        //valoresTeste();
 
         preparaToolbar();
 
@@ -117,6 +119,8 @@ public class PostActivity extends AppCompatActivity {
         capa = (ImageView) findViewById(R.id.post_foto);
         dataPostagem = (TextView) findViewById(R.id.post_dataPostagem);
         texto = (TextView) findViewById(R.id.post_texto);
+        likeButton = (Button) findViewById(R.id.like_button);
+              likeButton.setOnClickListener(likeButtonOnClickListener);
         autorNome = (TextView) findViewById(R.id.autor_nome);
         autorFoto = (ImageView) findViewById(R.id.autor_foto);
         autorDescricao = (TextView) findViewById(R.id.autor_descricao);
@@ -170,6 +174,13 @@ public class PostActivity extends AppCompatActivity {
                 "\t\taliquet quis orci. Curabitur maximus augue ut bibendum sagittis.");
 
     }
+
+    private View.OnClickListener likeButtonOnClickListener = new View.OnClickListener() {
+        @Override
+        public void onClick(View v) {
+
+        }
+    };
 
     public void setPost(Post post){
         this.post = post;
