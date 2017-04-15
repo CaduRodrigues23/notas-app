@@ -10,9 +10,7 @@ import org.lema.notasapp.R;
 import org.lema.notasapp.domain.model.Post;
 import org.lema.notasapp.ui.activity.PostActivity;
 
-import java.text.DateFormat;
 import java.text.SimpleDateFormat;
-import java.util.Date;
 
 /**
  * Created by igor on 08/03/17.
@@ -39,9 +37,9 @@ public class PostViewHolderSemImagem extends RecyclerView.ViewHolder {
         mensagem.setText(post.getTitulo());
         autor.setText(post.getAutor() != null ? post.getAutor().getNome() : "");
 
-        if (post.getDataPostagem() != null) {
+        if (post.getData() != null) {
             SimpleDateFormat dataPost = new SimpleDateFormat("dd/MM/yyyy");
-            data.setText(dataPost.format(post.getDataPostagem()));
+            data.setText(dataPost.format(post.getData()));
         } else {
             data.setText("");
         }

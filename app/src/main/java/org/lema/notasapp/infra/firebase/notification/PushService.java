@@ -11,6 +11,7 @@ import com.google.firebase.messaging.FirebaseMessagingService;
 import com.google.firebase.messaging.RemoteMessage;
 
 import org.lema.notasapp.R;
+import org.lema.notasapp.domain.model.Post;
 import org.lema.notasapp.ui.activity.FeedActivity;
 
 /**

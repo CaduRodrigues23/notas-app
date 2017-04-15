@@ -20,6 +20,7 @@ import org.lema.notasapp.domain.model.Post;
 
 import java.util.ArrayList;
 import java.util.Collections;
+import java.util.Comparator;
 import java.util.HashMap;
 import java.util.List;
 
@@ -77,8 +78,9 @@ public class FeedActivity extends AppCompatActivity {
         else {
             posts = new ArrayList<>(hashmap.values());
 
-            Collections.reverse(posts);
+
             preencheLista(posts);
+
         }
     }
 
