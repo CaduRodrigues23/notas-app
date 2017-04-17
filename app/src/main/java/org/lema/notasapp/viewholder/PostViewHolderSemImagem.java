@@ -43,9 +43,9 @@ public class PostViewHolderSemImagem extends RecyclerView.ViewHolder {
         mensagem.setText(post.getTitulo());
         autor.setText(post.getAutor() != null ? post.getAutor().getNome() : "");
 
-        if (post.getDataPostagem() != null) {
+        if (post.getData() != null) {
             SimpleDateFormat dataPost = new SimpleDateFormat("dd/MM/yyyy");
-            data.setText(dataPost.format(post.getDataPostagem()));
+            data.setText(dataPost.format(post.getData()));
         } else {
             data.setText("");
         }

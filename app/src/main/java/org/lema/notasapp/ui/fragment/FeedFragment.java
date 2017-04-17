@@ -80,15 +80,14 @@ public class FeedFragment extends Fragment {
         else
             posts = new ArrayList<>(hashmap.values());
 
+
         Collections.sort(posts, new Comparator<Post>() {
-                    @Override
-                    public int compare(Post o1, Post o2) {
-                        if (o1.getDataPostagem() == null || o2.getDataPostagem() == null)
-                            return 0;
-                        return o1.getDataPostagem().compareTo(o2.getDataPostagem());
-                    }
-                });
-        Collections.reverse(posts);
+            @Override
+            public int compare(Post post, Post t1) {
+                return t1.getData().compareTo(post.getData());
+            }
+        });
+
         preencheLista(posts);
 
     }

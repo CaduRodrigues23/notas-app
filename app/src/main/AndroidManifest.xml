@@ -4,6 +4,8 @@
 
     <uses-permission android:name="android.permission.INTERNET" />
     <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.VIBRATE" />
+    <uses-permission android:name="android.permission.WAKE_LOCK" />
 
     <application
         android:name=".infra.app.NotasAppAplication"
@@ -16,11 +18,13 @@
             android:name=".ui.activity.LoginActivity"
             android:configChanges="orientation|screenSize"
             android:label="@string/app_name">
+
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
+
         </activity>
         <activity android:name=".ui.activity.SugestaoNomeMateriaActivity" />
         <activity
@@ -28,11 +32,19 @@
             android:configChanges="orientation|screenSize" />
         <activity android:name=".ui.activity.FeedActivity" />
         <activity android:name=".ui.activity.TermosCondicoesActivity" />
-         <!--<activity android:name=".ui.activity.FeedActivity">
-         <intent-filter>
-         <category android:name="android.intent.category.LAUNCHER" />
-         </intent-filter>
-         </activity>-->
+
+        <service android:name=".infra.firebase.notification.PushService">
+            <intent-filter>
+                <action android:name="com.google.firebase.MESSAGING_EVENT" />
+            </intent-filter>
+        </service>
+
+        <service android:name=".infra.firebase.notification.InstanceIDService">
+            <intent-filter>
+                <action android:name="com.google.firebase.INSTANCE_ID_EVENT" />
+            </intent-filter>
+        </service>
+
         <activity android:name=".ui.activity.MainActivity">
             <intent-filter>
                 <category android:name="android.intent.category.LAUNCHER" />
@@ -44,5 +56,6 @@
             </intent-filter>
         </activity>
     </application>
+
 
 </manifest>

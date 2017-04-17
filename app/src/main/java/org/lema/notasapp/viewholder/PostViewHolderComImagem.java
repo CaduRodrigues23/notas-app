@@ -46,9 +46,9 @@ public class PostViewHolderComImagem extends RecyclerView.ViewHolder {
                 .load(post.getLinkParaFoto())
                 .into(imagem);
 
-        if (post.getDataPostagem() != null) {
+        if (post.getData() != null) {
             SimpleDateFormat dataPost = new SimpleDateFormat("dd/MM/yyyy");
-            data.setText(dataPost.format(post.getDataPostagem()));
+            data.setText(dataPost.format(post.getData()));
         } else {
             data.setText("");
         }

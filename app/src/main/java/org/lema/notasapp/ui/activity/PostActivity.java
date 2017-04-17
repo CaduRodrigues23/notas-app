@@ -130,10 +130,10 @@ public class PostActivity extends AppCompatActivity {
 
     private void preencheValores() {
         titulo.setText(post.getTitulo());
-        if (post.getDataPostagem() != null) {
+        if (post.getData() != null) {
             SimpleDateFormat data = new SimpleDateFormat("dd/MM/yyyy");
             SimpleDateFormat hora = new SimpleDateFormat("HH:mm");
-            dataPostagem.setText("Postado em " + data.format(post.getDataPostagem()).toString() + " às " + hora.format(post.getDataPostagem()).toString());
+            dataPostagem.setText("Postado em " + data.format(post.getData()).toString() + " às " + hora.format(post.getData()).toString());
         }
 
         if (post.getLinkParaFoto() == null) {
@@ -163,7 +163,7 @@ public class PostActivity extends AppCompatActivity {
         post.setLinkParaFoto(null);
         post.setTitulo("PROF. ALESSANDRO KAPPEL JORDÃO CONTEMPLADO NO EDITAL APQ1/2016");
         post.setAutor(autor);
-        post.setDataPostagem(date);
+        post.setData(date);
 
         post.setTexto("\tLorem ipsum dolor sit amet, consectetur adipiscing elit.\n" +
                 "\t\tIn mollis est vitae erat laoreet consectetur. Mauris dui mauris,\n" +

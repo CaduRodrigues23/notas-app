@@ -106,8 +106,6 @@ public class BoletimActivity extends OAuthActivity {
     public void preencheLista(BoletimEvent event) {
         ocultarCarregando();
 
-        Aluno comNome = alunoDao.obterAlunoDoLogin();
-
         materias = (ArrayList<MateriaDto>) event.boletim.getMaterias();
         aluno = event.boletim.getAluno();
 
