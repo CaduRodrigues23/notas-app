@@ -15,7 +15,7 @@ import com.google.firebase.database.GenericTypeIndicator;
 import com.google.firebase.database.ValueEventListener;
 
 import org.lema.notasapp.R;
-import org.lema.notasapp.adapter.FeedAdapter;
+import org.lema.notasapp.ui.adapter.FeedAdapter;
 import org.lema.notasapp.domain.model.Post;
 
 import java.util.ArrayList;
