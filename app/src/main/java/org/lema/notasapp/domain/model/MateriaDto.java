@@ -18,7 +18,6 @@ public class MateriaDto implements Serializable {
     private Double notaDaAv3;
     private Double media;
     private String ano;
-    private StatusDeAprovacao aprovacao;
     private String professor;
     private String codigo;
 
@@ -92,17 +91,6 @@ public class MateriaDto implements Serializable {
         return media;
     }
 
-    public StatusDeAprovacao getStatus() {
-        if(media >= 6)
-            aprovacao = StatusDeAprovacao.APROVADO;
-        else if(media <= 6 && notaDaAv3 != 0)
-            aprovacao = StatusDeAprovacao.REPROVADO;
-        else if(notaDaAv3 == 0 && notaDaAv3 == 0)
-            aprovacao = StatusDeAprovacao.SEM_NOTA;
-        else if(media <= 6 && notaDaAv3 == 0)
-            aprovacao = StatusDeAprovacao.ESPERANDO_AV3;
-        return aprovacao;
-    }
 
     public void setCodigo(String codigo) {
         this.codigo = codigo;

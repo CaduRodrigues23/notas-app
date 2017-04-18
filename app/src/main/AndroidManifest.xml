@@ -27,9 +27,6 @@
 
         </activity>
         <activity android:name=".ui.activity.SugestaoNomeMateriaActivity" />
-        <activity
-            android:name=".ui.activity.BoletimActivity"
-            android:configChanges="orientation|screenSize" />
         <activity android:name=".ui.activity.FeedActivity" />
         <activity android:name=".ui.activity.TermosCondicoesActivity" />
 
