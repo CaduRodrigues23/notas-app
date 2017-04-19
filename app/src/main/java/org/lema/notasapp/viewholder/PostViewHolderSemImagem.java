@@ -12,6 +12,7 @@ import org.lema.notasapp.ui.activity.PostActivity;
 
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
+import java.util.Calendar;
 import java.util.Date;
 
 /**
@@ -40,8 +41,19 @@ public class PostViewHolderSemImagem extends RecyclerView.ViewHolder {
         autor.setText(post.getAutor() != null ? post.getAutor().getNome() : "");
 
         if (post.getDataPostagem() != null) {
-            SimpleDateFormat dataPost = new SimpleDateFormat("dd/MM/yyyy");
-            data.setText(dataPost.format(post.getDataPostagem()));
+            Calendar calAtual = Calendar.getInstance();
+            Calendar calPost = Calendar.getInstance();
+            calAtual.set(Calendar.HOUR_OF_DAY, 0);
+            calAtual.set(Calendar.SECOND, 0);
+            calPost.setTime(post.getDataPostagem());
+
+            if (calPost.before(calAtual)) {
+                SimpleDateFormat dataPost = new SimpleDateFormat("dd/MM/yyyy");
+                data.setText(dataPost.format(post.getDataPostagem()));
+            } else {
+                SimpleDateFormat dataPost = new SimpleDateFormat("HH:mm");
+                data.setText("às " +  dataPost.format(post.getDataPostagem()));
+            }
         } else {
             data.setText("");
         }
