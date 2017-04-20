@@ -1,13 +1,15 @@
 package org.lema.notasapp.ui.activity;
 
-import android.app.usage.UsageEvents;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
-import org.greenrobot.eventbus.EventBus;
-import org.lema.notasapp.infra.exception.*;
-import org.lema.notasapp.ui.utils.DialogUtils;
 
-import java.lang.reflect.Field;
+import org.greenrobot.eventbus.EventBus;
+import org.lema.notasapp.infra.exception.ConnectionLostException;
+import org.lema.notasapp.infra.exception.GenericConnectionErrorException;
+import org.lema.notasapp.infra.exception.NoConnectionException;
+import org.lema.notasapp.infra.exception.UnauthorizedException;
+import org.lema.notasapp.infra.exception.UnavailableException;
+import org.lema.notasapp.ui.utils.DialogUtils;
 
 /**
  * Activity raiz. Não herdar diretamente.
