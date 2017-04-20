@@ -1,6 +1,8 @@
 package org.lema.notasapp.ui.activity;
 
 import android.os.Bundle;
+import android.util.Log;
+
 import org.greenrobot.eventbus.EventBus;
 import org.greenrobot.eventbus.Subscribe;
 import org.lema.notasapp.infra.error.APIError;
@@ -42,31 +44,41 @@ public abstract class OAuthActivity extends BaseActivity {
     public abstract void handle(ThrowableEvent event);
 
     @Override
-    @Subscribe
+    @Subscribe(priority = 1)
     public void handle(ConnectionLostException exception) {
         post(exception);
     }
 
     @Override
-    @Subscribe
+    @Subscribe(priority = 1)
     public void handle(GenericConnectionErrorException exception) {
         post(exception);
+
     }
 
     @Override
-    @Subscribe
+    @Subscribe(priority = 1)
     public void handle(NoConnectionException exception) {
         post(exception);
+
     }
 
     @Override
-    @Subscribe
+    @Subscribe(priority = 1)
     public void handle(UnavailableException exception) {
         post(exception);
+
     }
 
     private void post(Exception exception) {
         EventBus.getDefault().post(new ThrowableEvent(exception));
+        cancelEventDelivery(exception);
+    }
+
+    // o Subscriber de maior prioridade executará primeiro e garantirá por meio desse método que
+    // outros subscribers nao irão receber esse evento.
+    private void cancelEventDelivery(Object exception) {
+        EventBus.getDefault().cancelEventDelivery(exception);
     }
 
     @Override

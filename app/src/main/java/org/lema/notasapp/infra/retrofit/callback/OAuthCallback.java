@@ -17,7 +17,7 @@ public abstract class OAuthCallback<T> implements Callback<T> {
         ResponseChain successful = new SuccessfulResponseChain(this);
         ResponseChain unauthorized = new UnauthorizedResponseChain(this);
         ResponseChain unavailable = new UnavailableResponseChain(this);
-        ResponseChain apiError = new APIErrorResponseChain();
+        ResponseChain apiError = new APIErrorResponseChain(this);
 
         successful.setNext(unauthorized);
         unauthorized.setNext(unavailable);

@@ -16,7 +16,7 @@ public class Post implements Serializable{
     private String linkParaFoto;
     private Autor autor;
     private List<Like> likes;
-    private List<TagPost> tag;
+
 
     public String getTitulo() {
         return titulo;
@@ -66,11 +66,4 @@ public class Post implements Serializable{
         this.likes = likes;
     }
 
-    public List<TagPost> getTag() {
-        return tag;
-    }
-
-    public void setTag(List<TagPost> tag) {
-        this.tag = tag;
-    }
 }

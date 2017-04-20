@@ -1,10 +1,13 @@
 package org.lema.notasapp.ui.activity;
 
+import android.app.usage.UsageEvents;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import org.greenrobot.eventbus.EventBus;
 import org.lema.notasapp.infra.exception.*;
 import org.lema.notasapp.ui.utils.DialogUtils;
+
+import java.lang.reflect.Field;
 
 /**
  * Activity raiz. Não herdar diretamente.

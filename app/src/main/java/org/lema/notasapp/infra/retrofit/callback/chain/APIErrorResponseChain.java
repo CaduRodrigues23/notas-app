@@ -6,6 +6,9 @@ import org.greenrobot.eventbus.EventBus;
 import org.lema.notasapp.infra.RetrofitUtils;
 import org.lema.notasapp.infra.error.APIError;
 import org.lema.notasapp.infra.event.APIErrorEvent;
+import org.lema.notasapp.infra.exception.GenericConnectionErrorException;
+import org.lema.notasapp.infra.retrofit.callback.OAuthCallback;
+
 import retrofit2.Call;
 import retrofit2.Converter;
 import retrofit2.Response;
@@ -18,6 +21,11 @@ import java.lang.annotation.Annotation;
  */
 public class APIErrorResponseChain implements ResponseChain {
     private ResponseChain next;
+    private OAuthCallback callback;
+
+    public APIErrorResponseChain(OAuthCallback callback) {
+        this.callback = callback;
+    }
 
     @Override
     public void handler(Call call, Response response) {
@@ -28,7 +36,8 @@ public class APIErrorResponseChain implements ResponseChain {
             APIError error = converter.convert(responseBody);
             EventBus.getDefault().post(new APIErrorEvent(error));
         } catch (IOException e) {
-            Log.e("exception", e.toString() + "handle() - APIErrorResponseChain");
+            Log.e("erro", this.getClass().getName() + " - " + e.getMessage());
+            callback.onFailure(call, new GenericConnectionErrorException());
         }
     }
 

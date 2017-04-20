@@ -1,6 +1,8 @@
 package org.lema.notasapp.ui.activity;
 
 import android.os.Bundle;
+import android.util.Log;
+
 import org.greenrobot.eventbus.Subscribe;
 import org.lema.notasapp.infra.exception.*;
 import org.lema.notasapp.infra.listener.OnRetryListener;
@@ -29,11 +31,15 @@ public abstract class AccessTokenActivity extends BaseActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
-        oAuth2AccessTokenClient = new OAuth2AccessTokenClient(getApplication());
         dialogUtils = new DialogUtils(this);
 
-        getAccessToken();
+    }
 
+    @Override
+    protected void onStart() {
+        super.onStart();
+
+        getAccessToken();
     }
 
     @Subscribe
@@ -57,16 +63,19 @@ public abstract class AccessTokenActivity extends BaseActivity {
     }
 
     @Subscribe
-    public void handle(GenericConnectionErrorException exception) {
-        oAuth2AccessTokenClient.getAccessToken();
-    }
-
-    @Subscribe
+    @Override
     public void handle(ConnectionLostException exception) {
         oAuth2AccessTokenClient.getAccessToken();
     }
 
     @Subscribe
+    @Override
+    public void handle(GenericConnectionErrorException exception) {
+        oAuth2AccessTokenClient.getAccessToken();
+    }
+
+    @Subscribe
+    @Override
     public void handle(NoConnectionException exception) {
         dialogUtils.show(new DialogMessage(exception.getMessage(), new OnRetryListener() {
             @Override

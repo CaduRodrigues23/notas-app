@@ -17,7 +17,7 @@ import com.google.firebase.database.GenericTypeIndicator;
 import com.google.firebase.database.ValueEventListener;
 
 import org.lema.notasapp.R;
-import org.lema.notasapp.adapter.FeedAdapter;
+import org.lema.notasapp.ui.adapter.FeedAdapter;
 import org.lema.notasapp.domain.model.Post;
 import org.lema.notasapp.ui.activity.MainActivity;
 
@@ -80,7 +80,6 @@ public class FeedFragment extends Fragment {
         else
             posts = new ArrayList<>(hashmap.values());
 
-        preencheLista(posts);
 
         Collections.sort(posts, new Comparator<Post>() {
             @Override
@@ -88,6 +87,8 @@ public class FeedFragment extends Fragment {
                 return t1.getData().compareTo(post.getData());
             }
         });
+
+        preencheLista(posts);
 
     }
 

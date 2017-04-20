@@ -1,5 +1,6 @@
 package org.lema.notasapp.ui.activity;
 
+import android.os.Build;
 import android.os.Bundle;
 import android.support.design.widget.AppBarLayout;
 import android.support.design.widget.CollapsingToolbarLayout;
@@ -65,6 +66,7 @@ public class PostActivity extends AppCompatActivity {
 
     private void buscaParametros() {
         post = (Post) getIntent().getSerializableExtra("post");
+        corToolBar = (Integer) getIntent().getSerializableExtra("color");
     }
 
     private void preparaToolbar() {
@@ -133,6 +135,12 @@ public class PostActivity extends AppCompatActivity {
             SimpleDateFormat hora = new SimpleDateFormat("HH:mm");
             dataPostagem.setText("Postado em " + data.format(post.getData()).toString() + " às " + hora.format(post.getData()).toString());
         }
+
+        if (post.getLinkParaFoto() == null) {
+            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) getWindow().setStatusBarColor(corToolBar);
+            appBarLayout.setBackgroundResource(corToolBar);
+        }
+
         texto.setText(post.getTexto());
         autorNome.setText(post.getAutor().getNome());
         autorDescricao.setText(post.getAutor().getDescricao());

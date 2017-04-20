@@ -4,6 +4,7 @@ import android.app.Activity;
 import android.content.Intent;
 import android.support.v7.widget.RecyclerView;
 import android.view.View;
+import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 import org.lema.notasapp.R;
@@ -19,18 +20,23 @@ import java.text.SimpleDateFormat;
 public class PostViewHolderSemImagem extends RecyclerView.ViewHolder {
 
     private Activity activity;
+    private Integer layoutColor;
 
+    final RelativeLayout layout;
     final TextView mensagem;
     final TextView autor;
     final TextView data;
 
-    public PostViewHolderSemImagem(Activity activity, View itemView) {
+    public PostViewHolderSemImagem(Activity activity, View itemView, Integer layoutColor) {
         super(itemView);
 
         this.activity = activity;
+        this.layoutColor = layoutColor;
         mensagem = (TextView) itemView.findViewById(R.id.tv_feed_mensagem);
         autor = (TextView) itemView.findViewById(R.id.tv_feed_autor);
         data = (TextView) itemView.findViewById(R.id.tv_feed_data);
+        layout = (RelativeLayout) itemView.findViewById(R.id.rl_sem_foto);
+
     }
 
     public void onBind(final Post post) {
@@ -48,8 +54,12 @@ public class PostViewHolderSemImagem extends RecyclerView.ViewHolder {
             public void onClick(View view) {
                 Intent intent = new Intent(activity, PostActivity.class);
                 intent.putExtra("post", post);
+                intent.putExtra("color", layoutColor);
                 activity.startActivity(intent);
             }
         });
+
+        layout.setBackgroundResource(layoutColor);
     }
+
 }
