@@ -12,11 +12,11 @@ public class Post implements Serializable{
 
     private String titulo;
     private String texto;
-    private Date dataPostagem;
+    private Date data;
     private String linkParaFoto;
     private Autor autor;
     private List<Like> likes;
-    private List<TagPost> tag;
+
 
     public String getTitulo() {
         return titulo;
@@ -34,12 +34,12 @@ public class Post implements Serializable{
         this.texto = texto;
     }
 
-    public Date getDataPostagem() {
-        return dataPostagem;
+    public Date getData() {
+        return data;
     }
 
-    public void setDataPostagem(Date dataPostagem) {
-        this.dataPostagem = dataPostagem;
+    public void setData(Date data) {
+        this.data = data;
     }
 
     public String getLinkParaFoto() {
@@ -66,11 +66,4 @@ public class Post implements Serializable{
         this.likes = likes;
     }
 
-    public List<TagPost> getTag() {
-        return tag;
-    }
-
-    public void setTag(List<TagPost> tag) {
-        this.tag = tag;
-    }
 }

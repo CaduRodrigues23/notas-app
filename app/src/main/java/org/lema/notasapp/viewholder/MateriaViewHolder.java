@@ -49,14 +49,12 @@ public class MateriaViewHolder extends RecyclerView.ViewHolder {
 
     public void onBind(final MateriaDto materia) {
 
-        if (materia.getNotaDaAv1() == 10.0) av1.setText("10"); else av1.setText(String.valueOf(materia.getNotaDaAv1()));
-        if (materia.getNotaDaAv2() == 10.0) av2.setText("10"); else av2.setText(String.valueOf(materia.getNotaDaAv2()));
-        if (materia.getNotaDaAv3() == 10.0) av3.setText("10"); else av3.setText(String.valueOf(materia.getNotaDaAv3()));
-        if (materia.getMedia() == 10.0) media.setText("10"); else media.setText(String.valueOf(materia.getMedia()));
+        if (materia.getNotaDaAv1() == 10.0) av1.setText("10"); else av1.setText(materia.getNotaDaAv1().toString());
+        if (materia.getNotaDaAv2() == 10.0) av2.setText("10"); else av2.setText(materia.getNotaDaAv2().toString());
+        if (materia.getNotaDaAv3() == 10.0) av3.setText("10"); else av3.setText(materia.getNotaDaAv3().toString());
+        if (materia.getMedia() == 10.0) media.setText("10"); else media.setText(materia.getMedia().toString());
+
         nomeMateria.setText(String.valueOf(materia.getNome()));
-
-
-
 
         btnSugerir.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -64,51 +62,33 @@ public class MateriaViewHolder extends RecyclerView.ViewHolder {
                 AlertDialog.Builder builder = new AlertDialog.Builder(activity);
 
                 final EditText input = new EditText(activity);
-                // Specify the type of input expected; this, for example, sets the input as a password, and will mask the text
+
                 input.setInputType(InputType.TYPE_CLASS_TEXT);
                 builder.setView(input);
 
-                // 2. Chain together various setter methods to set the dialog characteristics
-                builder.setMessage(R.string.dialog_materia_message + " " + materia.getNome())
+                builder.setMessage(materia.getNome())
                         .setTitle(R.string.dialog_materia_title)
                         .setPositiveButton(R.string.dialog_materia_positive_button, new DialogInterface.OnClickListener() {
                             @Override
                             public void onClick(DialogInterface dialogInterface, int id) {
-                                // User clicked OK, so save the mSelectedItems results somewhere
-                                // or return them to the component that opened the dialog
-                                //...
-                                Intent irParaSugestao = new Intent(MateriaViewHolder.this.activity, SugestaoNomeMateriaActivity.class);
+
+                                Intent irParaSugestao = new Intent(MateriaViewHolder.this.activity,
+                                                                SugestaoNomeMateriaActivity.class);
                                 irParaSugestao.putExtra("materia", materia);
                                 irParaSugestao.putExtra("nomeSugerido", input.getText().toString());
 
-
                                 activity.startActivity(irParaSugestao);
-                                //activity.sugerir(materia, input.getText().toString(), activity);
-                                //Toast.makeText(activity, "Sugestão "+ input.getText() +" enviada com sucesso!", Toast.LENGTH_LONG).show();
-                               /* AlertDialog.Builder builder = new AlertDialog.Builder(activity);
-                                builder.setMessage(R.string.dialog_materia_response_message_sucess)
-                                        .setTitle(R.string.dialog_materia_response_title_sucess)
-                                        .setPositiveButton("OK", new DialogInterface.OnClickListener() {
-                                            @Override
-                                            public void onClick(DialogInterface dialogInterface, int id) {
-                                                dialogInterface.dismiss();
-                                            }
-                                        });
-
-                                AlertDialog dialog = builder.create();
-                                dialog.show();*/
 
 
                             }
-                        }).setNegativeButton(R.string.dialog_materia_negative_button, new DialogInterface.OnClickListener() {
+                }).setNegativeButton(R.string.dialog_materia_negative_button, new DialogInterface.OnClickListener() {
                     @Override
                     public void onClick(DialogInterface dialogInterface, int id) {
-                        //...
+
                         dialogInterface.dismiss();
                     }
                 });
 
-                // 3. Get the AlertDialog from create()
                 AlertDialog dialog = builder.create();
                 dialog.show();
             }

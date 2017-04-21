@@ -15,19 +15,20 @@ import com.google.firebase.database.GenericTypeIndicator;
 import com.google.firebase.database.ValueEventListener;
 
 import org.lema.notasapp.R;
-import org.lema.notasapp.adapter.FeedAdapter;
+import org.lema.notasapp.ui.adapter.FeedAdapter;
 import org.lema.notasapp.domain.model.Post;
 
 import java.util.ArrayList;
 import java.util.Collections;
+import java.util.Comparator;
 import java.util.HashMap;
 import java.util.List;
 
 public class FeedActivity extends AppCompatActivity {
 
     private RecyclerView mRecyclerViewFeed;
-    private Toolbar mToolbar;
     private DatabaseReference databaseReference;
+    private Toolbar mToolbar;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -74,36 +75,22 @@ public class FeedActivity extends AppCompatActivity {
 
         if(hashmap == null) // se nao tiver posts ou caso fique vazia
             posts = new ArrayList<>();
-        else
+        else {
             posts = new ArrayList<>(hashmap.values());
 
-        Collections.reverse(posts);
-        preencheLista(posts);
 
+            preencheLista(posts);
+
+        }
     }
 
     public void preencheLista(List<Post> posts)    {
 
-//        mPosts = new ArrayList<>();
-//
-//        Post p1 = new Post();
-//        p1.setTexto("Prof. Alessandro Karppel Jordão contemplado no edital PAq1/2016, mais de trinta professores selecionados.");
-//        p1.setAutor(new Autor("Maxmiller Alves"));
-//        mPosts.add(p1);
-//
-//        Post p2 = new Post();
-//        p2.setTexto("Prof. Alessandro Karppel Jordão contemplado no edital PAq1/2016, mais de trinta professores selecionados.");
-//        p2.setAutor(new Autor("Igor Ramos"));
-//        p2.setLinkParaFoto("https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRX7DtVZ8C3dRzQI7ZNj-_sGbyixlloKDUBDNpaal2YZxjFEGSjIA");
-//        mPosts.add(p2);
-//
-//        mPosts.add(p1);
-//        mPosts.add(p2);
-
-
-        mRecyclerViewFeed.setAdapter(new FeedAdapter(this, posts));
-        RecyclerView.LayoutManager layoutManager = new LinearLayoutManager(this, LinearLayoutManager.VERTICAL, false);
-        mRecyclerViewFeed.setLayoutManager(layoutManager);
+        if(posts != null || !posts.isEmpty()) {
+            mRecyclerViewFeed.setAdapter(new FeedAdapter(this, posts));
+            RecyclerView.LayoutManager layoutManager = new LinearLayoutManager(this, LinearLayoutManager.VERTICAL, false);
+            mRecyclerViewFeed.setLayoutManager(layoutManager);
+        }
     }
 
 

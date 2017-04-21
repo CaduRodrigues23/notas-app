@@ -11,7 +11,7 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import org.lema.notasapp.R;
-import org.lema.notasapp.adapter.BoletimAdapter;
+import org.lema.notasapp.ui.adapter.BoletimAdapter;
 import org.lema.notasapp.domain.model.MateriaDto;
 
 import java.util.ArrayList;

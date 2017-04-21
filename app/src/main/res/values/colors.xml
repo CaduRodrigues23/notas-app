@@ -30,13 +30,29 @@
 
     <color name="colorDialogScreenBackground">#6d000000</color>
 
-    <color name="colorFeedGradientBackgroundTop">#5e35b1</color>
-    <color name="colorFeedGradientBackgroundBottom">#7e339f</color>
+    <color name="colorFeedGradientBackgroundTopPurpleDeepPurple">#5e35b1</color>
+    <color name="colorFeedGradientBackgroundBottomPurpleDeepPurple">#7e339f</color>
 
     <!-- CORES DE TELAS QUE IRÃO SER ALTERADAS -->
     <color name="aprovado">#4CAF50</color>
     <color name="sem_nota">#DDD</color>
     <color name="esperando_av3">#FBC02D</color>
     <color name="reprovado">#F44336</color>
+    
+    <!-- CORES DO FEED -->
+    <color name="colorFeedGradientBackgroundTopRedPink">#E91E63</color>
+    <color name="colorFeedGradientBackgroundBottomRedPink">#F44336</color>
+
+    <color name="colorFeedGradientBackgroundTopIndigoBlue">#2196F3</color>
+    <color name="colorFeedGradientBackgroundBottomIndigoBlue">#3F51B5</color>
+
+    <color name="colorFeedGradientBackgroundTopTealGreen">#4CAF50</color>
+    <color name="colorFeedGradientBackgroundBottomTealGreen">#009688</color>
+
+    <color name="colorFeedGradientBackgroundTopYellowAmber">#FFC107</color>
+    <color name="colorFeedGradientBackgroundBottomYellowAmber">#FFEB3B</color>
+
+    <color name="colorFeedGradientBackgroundTopOrangeDeep">#FF5722</color>
+    <color name="colorFeedGradientBackgroundBottomOrangeDeep">#FF9800</color>
 
 </resources>

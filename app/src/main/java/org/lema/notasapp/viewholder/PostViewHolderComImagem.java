@@ -48,20 +48,22 @@ public class PostViewHolderComImagem extends RecyclerView.ViewHolder {
                 .load(post.getLinkParaFoto())
                 .into(imagem);
 
-        if (post.getDataPostagem() != null) {
+
+        if (post.getData() != null) {
             Calendar calAtual = Calendar.getInstance();
             Calendar calPost = Calendar.getInstance();
             calAtual.set(Calendar.HOUR_OF_DAY, 0);
             calAtual.set(Calendar.SECOND, 0);
-            calPost.setTime(post.getDataPostagem());
+            calPost.setTime(post.getData());
 
             if (calPost.before(calAtual)) {
                 SimpleDateFormat dataPost = new SimpleDateFormat("dd/MM/yyyy");
-                data.setText(dataPost.format(post.getDataPostagem()));
+                data.setText(dataPost.format(post.getData()));
             } else {
                 SimpleDateFormat dataPost = new SimpleDateFormat("HH:mm");
-                data.setText("às " +  dataPost.format(post.getDataPostagem()));
+                data.setText("às " +  dataPost.format(post.getData()));
             }
+            
         } else {
             data.setText("");
         }

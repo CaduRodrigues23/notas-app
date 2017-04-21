@@ -18,7 +18,7 @@ public class DialogUtils {
     }
 
     public void show(final DialogMessage message) {
-        builder
+        AlertDialog dialog = builder
                 .setCancelable(false)
                      /* TODO: extract strings to strings.xml */
                 .setMessage(message.getText())
@@ -28,14 +28,14 @@ public class DialogUtils {
                     public void onClick(DialogInterface dialogInterface, int i) {
                         message.getListener().onRetry();
                     }
-                }).create().show();
+                }).create();
 
+        if(!dialog.isShowing()) dialog.show();
     }
 
     public void showCancel(final DialogMessage message) {
-        builder
+        AlertDialog dialog = builder
                 .setCancelable(false)
-                     /* TODO: extract strings to strings.xml */
                 .setMessage(message.getText())
                 .setTitle("Falha")
                 .setPositiveButton("Tentar novamente", new DialogInterface.OnClickListener() {
@@ -49,7 +49,9 @@ public class DialogUtils {
             public void onClick(DialogInterface dialogInterface, int i) {
                         message.getListenerCancel().onCancel();
                 }
-                }).create().show();
+                }).create();
+
+        if(!dialog.isShowing()) dialog.show();
     }
 
     public void showCancelable(final DialogMessage message) {

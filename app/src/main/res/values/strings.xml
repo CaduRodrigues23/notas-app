@@ -37,7 +37,7 @@
 
     <string name="loading">Carregando</string>
 
-    <string name="dialog_materia_title">Matéria</string>
+    <string name="dialog_materia_title">Qual é o nome correto?</string>
     <string name="dialog_materia_message">Digite o nome correto da matéria</string>
     <string name="dialog_materia_positive_button">Sugerir</string>
     <string name="dialog_materia_negative_button">Cancelar</string>

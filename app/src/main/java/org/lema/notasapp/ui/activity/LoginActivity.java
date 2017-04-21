@@ -13,6 +13,7 @@ import android.widget.CheckBox;
 import android.widget.EditText;
 import android.widget.TextView;
 
+import org.greenrobot.eventbus.Subscribe;
 import org.lema.notasapp.R;
 import org.lema.notasapp.domain.dao.AlunoDao;
 import org.lema.notasapp.domain.model.Aluno;

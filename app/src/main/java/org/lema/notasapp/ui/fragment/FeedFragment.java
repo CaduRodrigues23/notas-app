@@ -17,11 +17,13 @@ import com.google.firebase.database.GenericTypeIndicator;
 import com.google.firebase.database.ValueEventListener;
 
 import org.lema.notasapp.R;
-import org.lema.notasapp.adapter.FeedAdapter;
+import org.lema.notasapp.ui.adapter.FeedAdapter;
 import org.lema.notasapp.domain.model.Post;
+import org.lema.notasapp.ui.activity.MainActivity;
 
 import java.util.ArrayList;
 import java.util.Collections;
+import java.util.Comparator;
 import java.util.HashMap;
 import java.util.List;
 
@@ -78,7 +80,14 @@ public class FeedFragment extends Fragment {
         else
             posts = new ArrayList<>(hashmap.values());
 
-        Collections.reverse(posts);
+
+        Collections.sort(posts, new Comparator<Post>() {
+            @Override
+            public int compare(Post post, Post t1) {
+                return t1.getData().compareTo(post.getData());
+            }
+        });
+
         preencheLista(posts);
 
     }
@@ -87,6 +96,8 @@ public class FeedFragment extends Fragment {
         mRecyclerViewFeed.setAdapter(new FeedAdapter(getActivity(), posts));
         RecyclerView.LayoutManager layoutManager = new LinearLayoutManager(getContext(), LinearLayoutManager.VERTICAL, false);
         mRecyclerViewFeed.setLayoutManager(layoutManager);
+
+        ((MainActivity)getActivity()).ocultarCarregando();
     }
 
 }

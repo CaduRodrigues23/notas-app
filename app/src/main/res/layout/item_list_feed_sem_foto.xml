@@ -9,6 +9,7 @@
     card_view:cardElevation="3dp">
 
     <RelativeLayout
+        android:id="@+id/rl_sem_foto"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:background="@drawable/fundo_feed_sem_foto">

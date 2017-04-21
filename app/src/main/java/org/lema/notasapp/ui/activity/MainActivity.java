@@ -9,6 +9,7 @@ import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 
+import org.greenrobot.eventbus.EventBus;
 import org.greenrobot.eventbus.Subscribe;
 import org.lema.notasapp.R;
 import org.lema.notasapp.domain.dao.AlunoDao;
@@ -145,7 +146,7 @@ public class MainActivity extends OAuthActivity {
 
     @Subscribe
     public void preencheLista(BoletimEvent event) {
-        ocultarCarregando();
+        //ocultarCarregando();
 
         Aluno comNome = alunoDao.obterAlunoDoLogin();
 
@@ -166,8 +167,8 @@ public class MainActivity extends OAuthActivity {
 
     @Subscribe
     public void onReceiveAccessToken(AccessToken accessToken) {
+        Log.i("accesstoken", "Token: " + accessToken.getCode());
         buscaBoletim();
-
     }
 
     @Subscribe
