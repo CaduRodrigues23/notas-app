@@ -48,7 +48,6 @@ public class PostViewHolderComImagem extends RecyclerView.ViewHolder {
                 .load(post.getLinkParaFoto())
                 .into(imagem);
 
-
         if (post.getData() != null) {
             Calendar calAtual = Calendar.getInstance();
             Calendar calPost = Calendar.getInstance();
@@ -63,7 +62,7 @@ public class PostViewHolderComImagem extends RecyclerView.ViewHolder {
                 SimpleDateFormat dataPost = new SimpleDateFormat("HH:mm");
                 data.setText("às " +  dataPost.format(post.getData()));
             }
-            
+
         } else {
             data.setText("");
         }

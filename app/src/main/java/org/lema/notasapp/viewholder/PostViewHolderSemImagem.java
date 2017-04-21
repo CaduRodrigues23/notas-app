@@ -13,7 +13,6 @@ import org.lema.notasapp.ui.activity.PostActivity;
 
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
-import java.util.Date;
 
 /**
  * Created by igor on 08/03/17.
@@ -62,6 +61,7 @@ public class PostViewHolderSemImagem extends RecyclerView.ViewHolder {
         } else {
             data.setText("");
         }
+
         mensagem.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
